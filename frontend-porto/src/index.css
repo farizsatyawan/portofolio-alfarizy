@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ── Custom Theme ── */
+@theme {
+  --color-dark-900: #0a0a0f;
+  --color-dark-800: #0f0f17;
+  --color-dark-700: #151520;
+  --color-dark-600: #1a1a2e;
+  --color-dark-500: #22223a;
+  --color-dark-400: #2a2a45;
+  --color-dark-300: #3a3a55;
+  --color-electric: #3b82f6;
+  --color-electric-light: #60a5fa;
+  --color-electric-dark: #2563eb;
+  --color-electric-glow: #3b82f680;
+}
+
+/* ── Base Styles ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-400) transparent;
+}
+
+::selection {
+  background: var(--color-electric);
+  color: white;
+}
+
+/* ── Animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px var(--color-electric-glow), 0 0 30px var(--color-electric-glow); }
+  50% { box-shadow: 0 0 25px var(--color-electric-glow), 0 0 50px var(--color-electric-glow); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Utility Animation Classes ── */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.7s ease-out both;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* ── Stagger Children ── */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.7s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.8s; }
+.stagger-children > *:nth-child(9) { animation-delay: 0.9s; }
+.stagger-children > *:nth-child(10) { animation-delay: 1.0s; }
+
+/* ── Glassmorphism Card ── */
+.glass-card {
+  background: linear-gradient(135deg, rgba(15, 15, 23, 0.8), rgba(26, 26, 46, 0.6));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1);
+  transform: translateY(-4px);
+}
+
+/* ── Glow Button ── */
+.btn-glow {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-electric-dark), var(--color-electric));
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--color-electric-glow);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px var(--color-electric-glow), 0 0 50px var(--color-electric-glow);
+  transform: translateY(-2px);
+}
+
+/* ── Section Reveal on Scroll ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, var(--color-electric-light) 50%, var(--color-electric) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
