@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { User, Save, Loader2, Upload, FileText, Trash2 } from 'lucide-react';
 import API from '../../utils/api';
 
-const STORAGE_URL = 'http://127.0.0.1:8000/storage/';
+const STORAGE_URL = `${import.meta.env.VITE_API_URL}/storage/`;
 
 export default function KelolaHero() {
   const [profile, setProfile] = useState(null);

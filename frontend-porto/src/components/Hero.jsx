@@ -9,7 +9,7 @@ export default function Hero() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/profiles');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/profiles`);
         console.log("Data Profil untuk Hero:", res.data);
         if (res.data?.data?.length > 0) {
           setProfile(res.data.data[0]);
@@ -44,11 +44,11 @@ export default function Hero() {
   const description = profile?.description || 'Belum ada deskripsi profil.';
   
   const profilePhotoUrl = profile?.profile_photo 
-    ? `http://localhost:8000/storage/profiles/${profile.profile_photo}`
+    ? (profile.profile_photo.startsWith('http') ? profile.profile_photo : `${import.meta.env.VITE_API_URL}/storage/profiles/${profile.profile_photo}`)
     : null;
 
   const resumeUrl = profile?.resume_pdf
-    ? `http://localhost:8000/storage/resumes/${profile.resume_pdf}`
+    ? (profile.resume_pdf.startsWith('http') ? profile.resume_pdf : `${import.meta.env.VITE_API_URL}/storage/resumes/${profile.resume_pdf}`)
     : null;
 
   return (

@@ -30,7 +30,7 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/projects');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects`);
         console.log("Respon mentah axios:", response.data);
         setProjects(response.data?.data || []);
       } catch (err) {
@@ -98,7 +98,7 @@ export default function Projects() {
 
             // Construct image URL safely
             const imageSrc = project.image
-              ? (project.image.startsWith('http') ? project.image : `http://localhost:8000/storage/projects/${project.image}`)
+              ? (project.image.startsWith('http') ? project.image : `${import.meta.env.VITE_API_URL}/storage/projects/${project.image}`)
               : '';
 
             const githubUrl = project.github_url || null;

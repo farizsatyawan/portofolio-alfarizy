@@ -9,7 +9,7 @@ export default function Certifications() {
   useEffect(() => {
     const fetchCerts = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/skills');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/skills`);
         const data = response.data?.data;
         if (Array.isArray(data)) {
           setCerts(data);

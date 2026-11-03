@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FolderKanban, Plus, Pencil, Trash2, X, Loader2, ExternalLink, GitBranch, ImageIcon } from 'lucide-react';
 import API from '../../utils/api';
 
-const STORAGE_URL = 'http://127.0.0.1:8000/storage/projects/';
+const STORAGE_URL = `${import.meta.env.VITE_API_URL}/storage/projects/`;
 const emptyForm = { title: '', description: '', github_url: '', demo_url: '', tech_stack: '', image: null };
 
 export default function KelolaProjects() {

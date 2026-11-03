@@ -40,7 +40,7 @@ export default function Contact() {
     e.preventDefault();
     setSaving(true);
     try {
-      await axios.post('http://localhost:8000/api/contacts', formData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/contacts`, formData);
       alert('Pesan berhasil dikirim!');
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 4000);

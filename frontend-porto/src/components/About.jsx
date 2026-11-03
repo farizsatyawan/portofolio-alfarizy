@@ -20,7 +20,7 @@ export default function About() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/profiles');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/profiles`);
         console.log("Data Profil untuk About:", response.data);
         
         const profileData = Array.isArray(response.data?.data)

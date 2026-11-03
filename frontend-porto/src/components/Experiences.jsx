@@ -53,7 +53,7 @@ export default function Experiences() {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/experiences');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/experiences`);
         setExperiences(response.data?.data || []);
       } catch (error) {
         console.error("Error Fetching:", error);
